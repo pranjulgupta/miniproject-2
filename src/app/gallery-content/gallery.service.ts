@@ -115,6 +115,6 @@ getcountlike(index)
 }
 getcountview(index)
 {
- //this.galleryList[index].view+=1;
+ this.galleryList[index].view+=1;
 }
 }
