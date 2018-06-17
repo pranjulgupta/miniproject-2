@@ -21,13 +21,13 @@
                 <span class="input-icon-addon">
                   <i class="fe fe-search"></i>
                 </span>
-                <input type="text" class="form-control w-10" placeholder="Search by caption">
+                <input type="text" class="form-control w-10" placeholder="Search by Name" [(ngModel)]="searchName">
               </div>
             </div>
           </div>
-     
+
 <div class="row row-cards" >
-  <div class="col-sm-6 col-lg-4" *ngFor ="let galleryarr of galleryarray; let i=index;">
+  <div class="col-sm-6 col-lg-4" *ngFor ="let galleryarr of galleryarray  | galleryFilter:searchName; let i=index">
     <div class="card p-3"  >
       <a href="javascript:void(0)" class="mb-3 zoom-cards">
         <img [src]="galleryarr.natureImagePath" alt="Photo by Nathan Guerrero" class="rounded">

@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import{ GalleryModel } from '../models/gallery.model'
+import{ GalleryModel } from '../models/gallery.model';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable()
 export class GalleryService
-{
+{constructor( private _http:HttpClient){}
     private  galleryList:GalleryModel[]=[{
         natureImagePath:'assets/demo/photos/grant-ritchie-338179-500.jpg',
       personImagePath:'assets/demo/faces/male/41.jpg',
@@ -114,6 +115,6 @@ getcountlike(index)
 }
 getcountview(index)
 {
-  this.galleryList[index].view+=1;
+ //this.galleryList[index].view+=1;
 }
 }

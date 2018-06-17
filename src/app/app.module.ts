@@ -10,13 +10,15 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { galleryFilterPipe } from './gallery-content/galleryfilter.pipe';
+import { HttpClientModule }  from '@angular/common/http';
 
-
+import {AuthGuard} from './auth.guard';
 const approutes: Routes=[
   {path:'',component:LoginComponent },
-   {path:'addgallery',component:AddgalleryComponent },
+   {path:'addgallery',component:AddgalleryComponent ,canActivate:[AuthGuard]},
    {path:'signup',component:SignupComponent },
-    {path:'showgallery',component:GalleryContentComponent },
+    {path:'showgallery',component:GalleryContentComponent ,canActivate:[AuthGuard]},
     {path:'showgallery/addgallery',component:AddgalleryComponent },
     {path:'signup/login',component:LoginComponent }
 ];
@@ -29,12 +31,12 @@ const approutes: Routes=[
     LoginComponent,
     SignupComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,galleryFilterPipe
   ],
   imports: [
-    BrowserModule,FormsModule, RouterModule.forRoot(approutes)
+    BrowserModule,FormsModule,HttpClientModule, RouterModule.forRoot(approutes)
   ],
-  providers: [GalleryService],
+  providers: [GalleryService,AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

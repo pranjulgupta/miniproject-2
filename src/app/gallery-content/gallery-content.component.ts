@@ -12,7 +12,8 @@ export class GalleryContentComponent implements OnInit {
 galleryarray:GalleryModel[];
 viewcount;
 likecount;
-i;
+searchName:string;
+
   constructor(private _galleryservice:GalleryService) { }
 
   ngOnInit() {this.galleryarray=this._galleryservice.getGallery();
@@ -30,5 +31,12 @@ getcounterview(index)
 {
   this.likecount=this._galleryservice.getcountview(index);
 
+}
+randomgallery=[];
+getrandom(){
+for(let i=0;i<=this.galleryarray.length;i++)
+this.randomgallery[i]=Math.round(Math.random()*this.galleryarray.length);
+
+console.log(this.randomgallery)
 }
 }
